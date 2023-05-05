@@ -92,7 +92,8 @@
     <TextView android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:background="@color/purple_500"/>
 
            <TextView
                style="@style/tv"
@@ -154,7 +155,8 @@
            <TextView android:id="@+id/cyleResult"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:textAlignment="center"/>
+               android:textAlignment="center"
+               android:background="@color/purple_500"/>
 
        </LinearLayout>
    </ScrollView>

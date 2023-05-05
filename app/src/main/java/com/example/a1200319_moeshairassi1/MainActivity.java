@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
         EditText cEt2 = findViewById(R.id.cTf2);
 
         TextView cyleResult = findViewById(R.id.cyleResult);
+        cyleResult.setVisibility(View.GONE);
 
 
         final int[] flag1 ={0};
@@ -181,6 +182,9 @@ public class MainActivity extends AppCompatActivity {
 
         Button cyleButton = findViewById(R.id.cyleCalculateButton);
         cyleButton.setOnClickListener(e->{
+
+            cyleResult.setVisibility(View.VISIBLE);
+
             Double n1= Double.parseDouble(cEt1.getText().toString());
             Double n2 =Double.parseDouble(cEt2.getText().toString());
 
