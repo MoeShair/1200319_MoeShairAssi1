@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Volumes</string>
+    <string name="solve_for">Solve for</string>
+    <string name="calculate">Calculate</string>
+    <string name="cuboid">Cuboid</string>
+    <string name="cylinder">Cylinder</string>
+    <string-array name="cuboid">
+        <item>Volume</item>
+        <item>Width</item>
+        <item>Length</item>
+        <item>Height</item>
+    </string-array>
+
+    <string-array name="cylinder">
+        <item>Volume</item>
+        <item>Radius</item>
+        <item>Height</item>
+    </string-array>
+</resources>
