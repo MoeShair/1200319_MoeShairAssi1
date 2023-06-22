@@ -2,7 +2,9 @@ package com.example.a1200319_moeshairassi1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -14,6 +16,13 @@ import com.example.a1200319_moeshairassi1.modle.Cuboid;
 import com.example.a1200319_moeshairassi1.modle.Cylinder;
 
 public class MainActivity extends AppCompatActivity {
+
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
+
+    public static final String FORMEL ="Formel";
+
+    private boolean flagg = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,26 @@ public class MainActivity extends AppCompatActivity {
 
         result.setVisibility(View.GONE);
 
+        String volFormulaa ="V=whl" ;
+
+        prefs= PreferenceManager.getDefaultSharedPreferences(this);
+        editor = prefs.edit();
+
+        if(!flagg){
+
+
+            editor.putString(FORMEL,volFormulaa);
+            editor.putString("cubWidth","w= V/hl");
+            editor.putString("cubLen","l=V/hw");
+            editor.putString("cubHei","h=V/lw");
+
+            editor.putString("cylVolume","V=Pi(r^2)h");
+            editor.putString("cylRad","r=(V/Pi h)^(1/2)");
+            editor.putString("cylHei","h=V/Pi*R^2");
+
+            editor.commit();
+        }
+
         Spinner spinner = findViewById(R.id.spinnerCuboid);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -47,28 +76,29 @@ public class MainActivity extends AppCompatActivity {
                 result.setText("");
 
                 if(selectedItem.equals("Volume")){
-                    formula.setText("V=whl");
+                    String st = prefs.getString(FORMEL," ");
+                    formula.setText(st);
                     tv1.setText("L\tlength");
                     tv2.setText("W\tWidth");
                     tv3.setText("H\tHeight");
                     flag[0] =1;
                 }
                 else if(selectedItem.equals("Width")){
-                    formula.setText("w= V/hl");
+                    formula.setText(prefs.getString("cubWidth"," "));
                     tv1.setText("L\tlength");
                     tv2.setText("H\tHeight");
                     tv3.setText("V\tVolume");
                     flag[0] =2;
                 }
                 else if(selectedItem.equals("Length")){
-                    formula.setText("l=V/hw");
+                    formula.setText(prefs.getString("cubLen"," "));
                     tv1.setText("W\tWidth");
                     tv2.setText("H\tHeight");
                     tv3.setText("V\tVolume");
                     flag[0] =3;
                 }
                 else if(selectedItem.equals("Height")){
-                    formula.setText("h=V/lw");
+                    formula.setText(prefs.getString("cubHei"," "));
                     tv1.setText("L\tlength");
                     tv2.setText("W\tWidth");
                     tv3.setText("V\tVolume");
@@ -150,21 +180,22 @@ public class MainActivity extends AppCompatActivity {
                 cyleResult.setText("");
 
                 if(selectedItem.equals("Volume")){
-                    cyleFormula.setText("V=Pi(r^2)h");
+
+                    cyleFormula.setText(prefs.getString("cylVolume"," "));
                     cTv1.setText("r\tRadius");
                     cTv2.setText("h\tHeight");
 
                     flag1[0] =1;
                 }
                 else if (selectedItem.equals("Radius")){
-                    cyleFormula.setText("r=(V/Pi h)^(1/2)");
+                    cyleFormula.setText(prefs.getString("cylRad"," "));
                     cTv1.setText("h\tHeight");
                     cTv2.setText("V\tVolume");
 
                     flag1[0] =2;
                 }
                 else if (selectedItem.equals("Height")){
-                    cyleFormula.setText("h=V/Pi*R^2");
+                    cyleFormula.setText(prefs.getString("cylHei"," "));
                     cTv1.setText("r\tRadius");
                     cTv2.setText("V\tVolume");
 

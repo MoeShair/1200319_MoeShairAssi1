@@ -161,6 +161,7 @@
                android:textColor="@color/white"/>
 
        </LinearLayout>
+
    </ScrollView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
